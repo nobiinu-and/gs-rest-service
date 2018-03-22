@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    tools {
-        maven '3.5.3'
-    }
     stages {
         stage ('Initialize') {
             steps {
@@ -15,11 +12,11 @@ pipeline {
 
         stage ('Build') {
             steps {
-                sh 'mvn test'
+                sh 'cd complete && ./mvnw test'
             }
             post {
                 success {
-                    junit 'target/surefire-reports/**/*.xml'
+                    junit 'complete/target/surefire-reports/**/*.xml'
                 }
             }
         }
