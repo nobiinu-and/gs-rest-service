@@ -15,7 +15,7 @@ pipeline {
                 sh 'cd complete && ./mvnw test'
             }
             post {
-                success {
+                always {
                     junit 'complete/target/surefire-reports/**/*.xml'
                 }
             }
